@@ -2,6 +2,8 @@ language: python
 
 python:
   - 2.7
+  - 3.5
+  - 3.6
 
 # Setup anaconda
 before_install:
@@ -19,12 +21,11 @@ install:
 
 script: 
   - export CONDA_BLD_PATH=$HOME/conda-bld
-  - conda build pandeia.engine
-  - conda install --use-local pandeia.engine
+  - conda build .
 
 after_success:
   - conda install anaconda-client
-  - conda convert --platform all $CONDA_BLD_PATH/linux-64/*.tar.bz2 --output-dir conda-bld/
-  - anaconda -t $CONDA_UPLOAD_TOKEN upload conda-bld/*/*.tar.bz2
+  - conda convert --platform all $CONDA_BLD_PATH/linux-64/*.tar.bz2 --output-dir $CONDA_BLD_PATH
+  - anaconda -t $CONDA_UPLOAD_TOKEN upload $CONDA_BLD_PATH/*/*.tar.bz2
 
 
