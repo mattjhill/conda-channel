@@ -1,0 +1,41 @@
+{% set name = "pandeia.engine" %}
+{% set version = "1.1.1" %}
+{% set hash_type = "sha256" %}
+{% set hash_value = "e5573acdccfae70e2fdb991a6bd6605e796264a6428ccc6da94466035e07c401" %}
+
+package:
+  name: '{{ name|lower }}'
+  version: '{{ version }}'
+
+source:
+  fn: '{{ name }}-{{ version }}.tar.gz'
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  '{{ hash_type }}': '{{ hash_value }}'
+
+build:
+  number: 0
+  script: python setup.py install  --single-version-externally-managed --record=record.txt
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - python
+
+test:
+  imports:
+    - pandeia
+
+about:
+  home: The package home page
+  license: BSD License
+  license_family: BSD
+  license_file: ''
+  summary: Summary of the package
+  description: "put a readme for the engine here\n\nshould be able to:\n\n\tsetup.py install\n\n\nshould be able to:\n\n\tsetup.py sdist\n\textract the source tar file\n\tsetup.py install\n\n"
+  doc_url: ''
+  dev_url: ''
+
+extra:
+  recipe-maintainers: ''

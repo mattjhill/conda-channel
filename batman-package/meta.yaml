@@ -1,0 +1,38 @@
+{% set name = "batman" %}
+{% set version = "master" %}
+
+package:
+  version: '{{ version }}'
+  name: '{{ name|lower }}'
+
+source:
+  git_rev: master
+  git_url: https://github.com/mattjhill/batman.git
+
+build:
+  number: 0
+  script: python setup.py install
+
+requirements:
+  build:
+    - python
+    - numpy
+    - matplotlib
+
+  run:
+    - python
+    - numpy 
+    - matplotlib
+
+about:
+  description: "Fast transit light curve modeling"
+  license: GNU GPLv3
+  license_family: GPL3
+  home: https://github.com/lkreidberg/batman
+  summary: Summary of the package
+  doc_url: ''
+  dev_url: ''
+  license_file: ''
+
+extra:
+  recipe-maintainers: ''
