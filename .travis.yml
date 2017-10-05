@@ -26,6 +26,6 @@ script:
 after_success:
   - conda install anaconda-client
   - conda convert --force --platform all $CONDA_BLD_PATH/linux-64/*.tar.bz2 --output-dir $CONDA_BLD_PATH
-  - anaconda -t $CONDA_UPLOAD_TOKEN upload $CONDA_BLD_PATH/*/*.tar.bz2
+  - anaconda -t $CONDA_UPLOAD_TOKEN upload --force $CONDA_BLD_PATH/*/*.tar.bz2
 
 
