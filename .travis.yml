@@ -15,7 +15,7 @@ before_install:
 build:
   script:
     - conda install conda-build
-    - conda-build pandeia.engine
+    - conda build pandeia.engine
 
 after_success:
   - conda install anaconda-client
