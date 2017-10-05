@@ -18,12 +18,13 @@ install:
   - conda config --add channels http://ssb.stsci.edu/astroconda
 
 script: 
+  - export CONDA_BLD_PATH=$HOME/conda-bld
   - conda build pandeia.engine
   - conda install --use-local pandeia.engine
 
 after_success:
   - conda install anaconda-client
-  - conda convert --platform all $HOME/miniconda/conda-bld/linux-64/$PACKAGENAME-*.tar.bz2 --output-dir conda-bld/
-  - anaconda -t $CONDA_UPLOAD_TOKEN upload conda-bld/**/PACKAGENAME-*.tar.bz2
+  - conda convert --platform all $CONDA_BLD_PATH/linux-64/*.tar.bz2 --output-dir conda-bld/
+  - anaconda -t $CONDA_UPLOAD_TOKEN upload conda-bld/*/*.tar.bz2
 
 
