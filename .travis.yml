@@ -1,13 +1,13 @@
-language: python
+language: c
 
 os:
   - linux
   - osx
 
-python:
-  - 2.7
-  - 3.5
-  - 3.6
+env:
+  - PYTHON_VERSION=2.7
+  - PYTHON_VERSION=3.5
+  - PYTHON_VERSION=3.6
 
 # Setup anaconda
 before_install:
@@ -27,7 +27,7 @@ install:
 
 script: 
   - export CONDA_BLD_PATH=$HOME/conda-bld
-  - conda build --py $TRAVIS_PYTHON_VERSION .
+  - conda build --py $PYTHON_VERSION .
 
 after_success:
   - conda install anaconda-client
