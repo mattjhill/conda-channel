@@ -1,0 +1,39 @@
+{% set name = "multinest" %}
+{% set version = "3.10" %}
+
+package:
+  version: '{{ version }}'
+  name: '{{ name|lower }}'
+
+source:
+  git_rev: master
+  git_url: https://github.com/JohannesBuchner/MultiNest.git
+
+build:
+  number: 0
+  script: 
+    - cd build 
+    - CC=mpicc CXX=mpic++ FC=mpif90 cmake -DCMAKE_INSTALL_PREFIX=${PREFIX} ..
+    - make
+    - make install
+
+requirements:
+  build:
+    - cmake
+    - openmpi ==2.1.2
+    
+  run:
+    - openmpi ==2.1.2
+
+about:
+  description: ""
+  license: BSD License
+  license_family: BSD
+  home: The package home page
+  summary: Summary of the package
+  doc_url: ''
+  dev_url: ''
+  license_file: ''
+
+extra:
+  recipe-maintainers: ''
