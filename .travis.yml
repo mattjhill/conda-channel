@@ -1,5 +1,9 @@
 language: python
 
+os:
+  - linux
+  - osx
+
 python:
   - 2.7
   - 3.5
@@ -25,7 +29,7 @@ script:
 
 after_success:
   - conda install anaconda-client
-  - conda convert --force --platform all $CONDA_BLD_PATH/linux-64/*.tar.bz2 --output-dir $CONDA_BLD_PATH
+  - if [[ "TRAVIS_OS_NAME" == "linux" ]]; then conda convert --force --platform linux-32 $CONDA_BLD_PATH/linux-64/*.tar.bz2 --output-dir $CONDA_BLD_PATH; fi
   - anaconda -t $CONDA_UPLOAD_TOKEN upload --force $CONDA_BLD_PATH/*/*.tar.bz2
 
 
