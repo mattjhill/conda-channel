@@ -19,6 +19,7 @@ build:
 
 requirements:
   build:
+    - gcc
     - cmake
     - openmpi ==2.1.2
     
