@@ -21,13 +21,13 @@ requirements:
   build:
     - gcc
     - cmake
-    - libcxx
+    - libcxx >=4.0.0
     - mkl
     - openmpi ==2.1.2
     
   run:
     - libgcc
-    - libcxx
+    - libcxx >=4.0.0
     - openmpi ==2.1.2
 
 about:
