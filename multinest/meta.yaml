@@ -19,14 +19,11 @@ build:
 
 requirements:
   build:
-    - gcc
-    - libgcc
     - cmake
     - openmpi ==2.1.2
     
   run:
     - openmpi ==2.1.2
-    - libgcc
 
 about:
   description: ""
