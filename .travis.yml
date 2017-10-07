@@ -24,9 +24,10 @@ before_install:
   - conda config --set anaconda_upload no
 
 install:
-  - conda install conda-build 
-  - conda config --add channels http://ssb.stsci.edu/astroconda
+  - conda install conda-build
   - conda config --add channels conda-forge
+  - conda config --add channels http://ssb.stsci.edu/astroconda
+  - conda config --add channels default
 
 script: 
   - export CONDA_BLD_PATH=$HOME/conda-bld
