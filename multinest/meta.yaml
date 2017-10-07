@@ -13,7 +13,7 @@ build:
   number: 0
   script: 
     - cd build 
-    - FC=mpif90 cmake -DCMAKE_INSTALL_PREFIX=${PREFIX} -DCMAKE_C_COMPILER=${PREFIX}/bin/mpicc -DCMAKE_CXX_COMPILER=${PREFIX}/bin/mpic++ ..
+    - OMPI_CXX=g++ OMPI_CC=gcc FC=mpif90 cmake -DCMAKE_INSTALL_PREFIX=${PREFIX} -DCMAKE_C_COMPILER=${PREFIX}/bin/mpicc -DCMAKE_CXX_COMPILER=${PREFIX}/bin/mpic++ ..
     - make
     - make install
 
