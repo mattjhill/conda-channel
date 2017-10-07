@@ -31,7 +31,7 @@ install:
 
 script: 
   - export CONDA_BLD_PATH=$HOME/conda-bld
-  - conda build --py $PYTHON_VERSION multinest
+  - conda build --py $PYTHON_VERSION .
 
 after_success:
   - conda install anaconda-client
